@@ -162,8 +162,8 @@ _content = nil;
 %IFEQ element.type.assignOrRetain retain
 
 %IF element.useAnArray
-		for(%«element.type.classNameWithPtr» child in self.%«element.name») {
-			xmlAddChild(node, [child xmlNodeForDoc:node->doc elementName:@"%«element.wsdlName»" elementNSPrefix:@"%«schema.prefix»"]);
+		for(%«element.type.classNameWithPtr» c in self.%«element.name») {
+			xmlAddChild(node, [c xmlNodeForDoc:node->doc elementName:@"%«element.wsdlName»" elementNSPrefix:@"%«schema.prefix»"]);
 		}
 %ELSE
 		xmlAddChild(node, [self.%«element.name» xmlNodeForDoc:node->doc elementName:@"%«element.wsdlName»" elementNSPrefix:@"%«schema.prefix»"]);
@@ -408,10 +408,10 @@ _content = nil;
 					
 					NSString *elementClassString = nil;
 					if([elementTypeArray count] > 1) {
-						NSString *prefix = [elementTypeArray objectAtIndex:0];
+						NSString *p = [elementTypeArray objectAtIndex:0];
 						NSString *localName = [elementTypeArray objectAtIndex:1];
 						
-						xmlNsPtr elementNamespace = xmlSearchNs(cur->doc, cur, [prefix xmlString]);
+						xmlNsPtr elementNamespace = xmlSearchNs(cur->doc, cur, [p xmlString]);
 						
 						NSString *standardPrefix = [[USGlobals sharedInstance].wsdlStandardNamespaces objectForKey:[NSString stringWithCString:(char*)elementNamespace->href encoding:NSUTF8StringEncoding]];
 						
