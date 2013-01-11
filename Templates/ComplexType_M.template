@@ -47,9 +47,15 @@ _content = nil;
 
 %IFDEF sequenceElements
 %FOREACH element in sequenceElements
+
+%IF element.useAnArray
+	if(%«element.name» != nil) [%«element.name» release];
+%ELSE
 %IFEQ element.type.assignOrRetain retain
 	if(%«element.name» != nil) [%«element.name» release];
 %ENDIF
+%ENDIF
+
 %ENDFOR
 %ENDIF
 
