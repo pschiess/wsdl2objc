@@ -114,6 +114,7 @@
 	} else {
 		if([baseType isSimpleType]) {
 			type.representationClass = baseType.representationClass;
+			type.baseTypeName = name;
 		}
 	}
 	

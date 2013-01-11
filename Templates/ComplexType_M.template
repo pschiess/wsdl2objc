@@ -292,72 +292,72 @@ _content = nil;
 	if(attrValue != NULL) {
 		attrString = [NSString stringWithCString:(char*)attrValue encoding:NSUTF8StringEncoding];
 
-%IFEQ attribute.type.typeName boolean
-		self.%«attribute.name» = [[[USBoolean alloc] initWithBool:([attrString boolValue] ? YES : NO)] autorelease];
-%ELSIFEQ attribute.type.typeName byte
-		self.%«attribute.name» = [NSNumber numberWithChar:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName int
-		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName integer
-		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName nonNegativeInteger
-		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName positiveInteger
-		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName unsignedByte
-		self.%«attribute.name» = [NSNumber numberWithUnsignedChar:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName unsignedInt
-		self.%«attribute.name» = [NSNumber numberWithUnsignedInt:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName double
-		self.%«attribute.name» = [NSNumber numberWithDouble:[attrString doubleValue]];
-%ELSIFEQ attribute.type.typeName long
-		self.%«attribute.name» = [NSNumber numberWithLong:[attrString longValue]];
-%ELSIFEQ attribute.type.typeName unsignedLong
-		self.%«attribute.name» = [NSNumber numberWithUnsignedLong:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName short
-		self.%«attribute.name» = [NSNumber numberWithShort:[attrString shortValue]];
-%ELSIFEQ attribute.type.typeName unsignedShort
-		self.%«attribute.name» = [NSNumber numberWithUnsignedShort:[attrString intValue]];
-%ELSIFEQ attribute.type.typeName float
-		self.%«attribute.name» = [NSNumber numberWithFloat:[attrString doubleValue]];
-%ELSIFEQ attribute.type.typeName dateTime
-		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
-%ELSIFEQ attribute.type.typeName date
-		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
-%ELSIFEQ attribute.type.typeName time
-		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
-%ELSIFEQ attribute.type.typeName duration
-		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
-%ELSIFEQ attribute.type.typeName base64Binary
-		self.%«attribute.name» = [NSData dataWithBase64EncodedString:base64Binary];
-%ELSIFEQ attribute.type.typeName decimal
-		self.%«attribute.name» = [NSNumber numberWithDouble:[attrString doubleValue]];
-%ELSIFEQ attribute.type.typeName QName
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName anyURI
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName string
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName normalizedString
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName token
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName language
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName Name
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName NCName
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName anyType
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName ID
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName ENTITY
-		self.%«attribute.name» = attrString;
-%ELSIFEQ attribute.type.typeName IDREF
-		self.%«attribute.name» = attrString;
-%ELSIFNEQ attribute.type.enumCount 0
+%IFNEQ attribute.type.enumCount 0
 		self.%«attribute.name» = %«attribute.type.className»_enumFromString(attrString);
+%ELSIFEQ attribute.type.baseTypeName boolean
+		self.%«attribute.name» = [[[USBoolean alloc] initWithBool:([attrString boolValue] ? YES : NO)] autorelease];
+%ELSIFEQ attribute.type.baseTypeName byte
+		self.%«attribute.name» = [NSNumber numberWithChar:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName int
+		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName integer
+		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName nonNegativeInteger
+		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName positiveInteger
+		self.%«attribute.name» = [NSNumber numberWithInt:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName unsignedByte
+		self.%«attribute.name» = [NSNumber numberWithUnsignedChar:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName unsignedInt
+		self.%«attribute.name» = [NSNumber numberWithUnsignedInt:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName double
+		self.%«attribute.name» = [NSNumber numberWithDouble:[attrString doubleValue]];
+%ELSIFEQ attribute.type.baseTypeName long
+		self.%«attribute.name» = [NSNumber numberWithLong:[attrString longValue]];
+%ELSIFEQ attribute.type.baseTypeName unsignedLong
+		self.%«attribute.name» = [NSNumber numberWithUnsignedLong:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName short
+		self.%«attribute.name» = [NSNumber numberWithShort:[attrString shortValue]];
+%ELSIFEQ attribute.type.baseTypeName unsignedShort
+		self.%«attribute.name» = [NSNumber numberWithUnsignedShort:[attrString intValue]];
+%ELSIFEQ attribute.type.baseTypeName float
+		self.%«attribute.name» = [NSNumber numberWithFloat:[attrString doubleValue]];
+%ELSIFEQ attribute.type.baseTypeName dateTime
+		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
+%ELSIFEQ attribute.type.baseTypeName date
+		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
+%ELSIFEQ attribute.type.baseTypeName time
+		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
+%ELSIFEQ attribute.type.baseTypeName duration
+		self.%«attribute.name» = [NSDate dateWithISO8601String:attrString];
+%ELSIFEQ attribute.type.baseTypeName base64Binary
+		self.%«attribute.name» = [NSData dataWithBase64EncodedString:attrString];
+%ELSIFEQ attribute.type.baseTypeName decimal
+		self.%«attribute.name» = [NSNumber numberWithDouble:[attrString doubleValue]];
+%ELSIFEQ attribute.type.baseTypeName QName
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName anyURI
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName string
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName normalizedString
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName token
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName language
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName Name
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName NCName
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName anyType
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName ID
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName ENTITY
+		self.%«attribute.name» = attrString;
+%ELSIFEQ attribute.type.baseTypeName IDREF
+		self.%«attribute.name» = attrString;
 %ELSE
 #warning Not handling attribute %«attribute.name» with type %«attribute.type.typeName»
 %ENDIF

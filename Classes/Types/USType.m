@@ -31,6 +31,7 @@
 
 #pragma mark Global type methods
 @synthesize typeName;
+@synthesize baseTypeName;
 @synthesize schema;
 @synthesize behavior;
 @synthesize hasBeenParsed;

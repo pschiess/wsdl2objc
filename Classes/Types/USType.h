@@ -44,6 +44,7 @@ typedef enum {
 	
 	
 #pragma mark Simple type fields
+	NSString *baseTypeName;
 	NSString *representationClass;
 	NSMutableArray *enumerationValues;
 	
@@ -79,6 +80,7 @@ typedef enum {
 
 
 #pragma mark Simple type methods
+@property (nonatomic, copy) NSString *baseTypeName;
 @property (nonatomic, copy) NSString *representationClass;
 @property (nonatomic, retain) NSMutableArray *enumerationValues;
 

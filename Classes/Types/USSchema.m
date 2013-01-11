@@ -100,6 +100,7 @@
 	
 	USType *newType = [USType new];
 	newType.typeName = aName;
+	newType.baseTypeName = aName;
 	newType.schema = self;
 	
 	[self.types addObject:newType];
