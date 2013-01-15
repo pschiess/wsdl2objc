@@ -308,6 +308,8 @@
 
 - (void)main
 {
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+
 	[response autorelease];
 	response = [%«className»Response new];
 	
@@ -409,6 +411,8 @@
 	operationXMLString = binding.soapSigner ? [binding.soapSigner signRequest:operationXMLString] : operationXMLString;
 	
 	[binding sendHTTPCallUsingBody:operationXMLString soapAction:@"%«operation.soapAction»" forOperation:self];
+
+	[pool release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
